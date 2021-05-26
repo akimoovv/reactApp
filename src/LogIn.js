@@ -29,7 +29,6 @@ const LogIn = (props) => {
 
             <button onClick={() => {
                 logIn();
-                // window.location.href = '/';
             }}>Login</button>
 
             <button onClick={() => {

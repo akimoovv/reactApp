@@ -5,6 +5,7 @@ import axios from "axios";
 
 const SignUp = (props) => {
 
+    axios.defaults.withCredentials = true;
     const signUpUrl = 'http://localhost:8080/myapp/api/v1/auth/signup';
 
 
@@ -39,7 +40,7 @@ const SignUp = (props) => {
 
             <button onClick={() => {
                 singUp();
-                // window.location.href = '/';
+                window.location.href = '/';
             }}>Sign Up!</button>
 
             <button onClick={() => {

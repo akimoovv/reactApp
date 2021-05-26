@@ -4,6 +4,7 @@ import axios from "axios";
 
 const Users = () => {
 
+    axios.defaults.withCredentials = true;
 
     const url = 'http://localhost:8080/myapp/api/v1/users/';
 
