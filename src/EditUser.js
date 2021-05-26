@@ -24,7 +24,6 @@ const EditUser = (props) => {
     const getUserById = (id) => {
         axios.get(getUserByIdUrl + id).then(response => {
             let data = response.data;
-            console.log(data);
             setUser(data);
         }).catch((error) => {
             setError(true);
@@ -33,6 +32,7 @@ const EditUser = (props) => {
 
     const updateUserById = (id) => {
         axios.put(updateUserByIdUrl + id, {
+            withCredentials: true,
             email: email,
             name: name,
             age: age

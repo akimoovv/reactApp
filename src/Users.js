@@ -5,22 +5,31 @@ import axios from "axios";
 const Users = () => {
 
 
-    const deleteUserUrl = 'http://localhost:8080/myapp/api/v1/users/';
+    const url = 'http://localhost:8080/myapp/api/v1/users/';
 
-    const [isAuth, setIsAuth] = useState(true);
+    const [isAuth, setIsAuth] = useState(false);
 
     const [users, setUsers] = useState([]);
 
+    const checkAndSetAuth = () => {
+        axios.get(url + 'validate', {withCredentials: true})
+            .then(response => {
+                console.log(response.status);
+                setIsAuth(true)
+            }).catch(() => {setIsAuth(false)})
+    }
 
-    const deleteUser = (id) => {axios.delete(deleteUserUrl + id).then(response => {
-        console.log(response)
+    const deleteUser = (id) => {axios.delete(url + id, {withCredentials: true})
+        .then(response => {
         getUsers();
+        console.log(response)
     }).catch((error) => {
         console.log(error)
     })};
 
 
-    const getUsers = () => {axios.get(deleteUserUrl).then(response => {
+
+    const getUsers = () => {axios.get(url).then(response => {
         let dataJson = response.data;
         setUsers(dataJson);
     }).catch((error) => {
@@ -30,6 +39,7 @@ const Users = () => {
 
 
     useEffect(() => {
+        checkAndSetAuth();
         getUsers();
     }, [])
 

@@ -5,16 +5,15 @@ import axios from "axios";
 
 const LogIn = (props) => {
 
-    const logInUrl = 'http://localhost:8080/myapp/api/auth/login';
-
+    const url = 'http://localhost:8080/myapp/api/v1/auth/login';
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
 
-    const logIn = () => {axios.post(logInUrl, {
+    const logIn = () => {axios.post(url, {
         withCredentials: true,
-        email : "email@mail.com",
-        password : "admin"
+        email : email,
+        password : password
     }).then(response => {
         console.log(response)
     }).catch((error) => {
@@ -25,8 +24,8 @@ const LogIn = (props) => {
 
     return (
         <div>
-            <h2>Email: <input type="text" onChange={e => setEmail(e.toString())}/></h2>
-            <h2>Password: <input type="password" onChange={e => setPassword(e.toString())}/></h2>
+            <h2>Email: <input type="text" onChange={e => setEmail(email + e.nativeEvent.data)}/></h2>
+            <h2>Password: <input type="password" onChange={e => setPassword(password + e.nativeEvent.data)}/></h2>
 
             <button onClick={() => {
                 logIn();

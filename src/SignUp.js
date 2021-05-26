@@ -16,11 +16,11 @@ const SignUp = (props) => {
 
     const singUp = () => {axios.post(signUpUrl, {
         withCredentials: true,
-        email : email.toString(),
-        password : password.toString(),
-        name : name.toString(),
-        age : age.toString(),
-        role : role.toString(),
+        email : email,
+        password : password,
+        name : name,
+        age : age,
+        role : role,
     }).then(response => {
         console.log(response)
     }).catch((error) => {
