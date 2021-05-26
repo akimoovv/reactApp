@@ -14,6 +14,7 @@ const Users = () => {
 
     const deleteUser = (id) => {axios.delete(deleteUserUrl + id).then(response => {
         console.log(response)
+        getUsers();
     }).catch((error) => {
         console.log(error)
     })};
@@ -30,7 +31,7 @@ const Users = () => {
 
     useEffect(() => {
         getUsers();
-    }, [users])
+    }, [])
 
 
 

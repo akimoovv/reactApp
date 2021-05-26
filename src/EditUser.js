@@ -33,9 +33,9 @@ const EditUser = (props) => {
 
     const updateUserById = (id) => {
         axios.put(updateUserByIdUrl + id, {
-            email: user.email,
-            name: user.name,
-            age: user.age
+            email: email,
+            name: name,
+            age: age
         }).then(response => {
             console.log(response)
         }).catch((error) => {
@@ -52,18 +52,18 @@ const EditUser = (props) => {
     return (
         <div>
             {!isError ? <h2>Email: <input type="text" value={user.email}
-                                          onChange={e => setEmail(e)}
+                                          onChange={e => setEmail(e.toString())}
                 /></h2>
                 : <h1>404 not found</h1>}
 
             {!isError ? <h2>Name: <input type="text" value={user.name}
-                                         onChange={e => setName(e)}
+                                         onChange={e => setName(e.toString())}
 
                 /></h2>
                 : ""}
 
             {!isError ? <h2>Age: <input type="text" value={user.age}
-                                        onChange={e => setAge(e)}
+                                        onChange={e => setAge(e.toString())}
 
                 /></h2>
                 : ""}
