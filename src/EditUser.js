@@ -51,18 +51,18 @@ const EditUser = (props) => {
 
     return (
         <div>
-            {!isError ? <h2>Email: <input type="text" value={user.email}
+            {!isError ? <h2>Email: <input type="text"
                                           onChange={e => setEmail(e.toString())}
                 /></h2>
                 : <h1>404 not found</h1>}
 
-            {!isError ? <h2>Name: <input type="text" value={user.name}
+            {!isError ? <h2>Name: <input type="text"
                                          onChange={e => setName(e.toString())}
 
                 /></h2>
                 : ""}
 
-            {!isError ? <h2>Age: <input type="text" value={user.age}
+            {!isError ? <h2>Age: <input type="text"
                                         onChange={e => setAge(e.toString())}
 
                 /></h2>

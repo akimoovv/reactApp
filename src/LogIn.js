@@ -9,6 +9,14 @@ const LogIn = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const [isAuth, setAuth] = useState(false);
+
+    const checkAndSetAuth = () => {
+        axios.get(url + 'validate', {withCredentials: true})
+            .then(response => {
+                setAuth(true)
+            }).catch(() => {setAuth(false)})
+    }
 
     const logIn = () => {axios.post(url, {
         withCredentials: true,
@@ -16,6 +24,7 @@ const LogIn = (props) => {
         password : password
     }).then(response => {
         console.log(response)
+        checkAndSetAuth();
     }).catch((error) => {
         console.log(error)
     })};
@@ -24,8 +33,12 @@ const LogIn = (props) => {
 
     return (
         <div>
-            <h2>Email: <input type="text" onChange={e => setEmail(email + e.nativeEvent.data)}/></h2>
-            <h2>Password: <input type="password" onChange={e => setPassword(password + e.nativeEvent.data)}/></h2>
+            {!isAuth ?
+            <h2>Email: <input type="text" onChange={e => setEmail(email + e.nativeEvent.data)}/></h2> : ""}
+            {!isAuth ?
+                <h2>Password:
+                    <input type="password"
+                           onChange={e => setPassword(password + e.nativeEvent.data)}/></h2> : ""}
 
             <button onClick={() => {
                 logIn();
