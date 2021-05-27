@@ -5,7 +5,7 @@ import axios from "axios";
 
 const LogIn = (props) => {
 
-    const url = 'http://localhost:8080/myapp/api/v1/auth/login';
+    const url = 'http://localhost:8080/myapp/api/v1/auth/login/';
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 

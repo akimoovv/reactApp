@@ -13,9 +13,9 @@ const EditUser = (props) => {
     const [user, setUser] = useState(-1);
 
 
-    const [email, setEmail] = useState(user.email);
-    const [name, setName] = useState(user.name);
-    const [age, setAge] = useState(user.age);
+    const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
+    const [age, setAge] = useState("");
 
 
     const [isSaved, setSaved] = useState(false);
@@ -52,18 +52,18 @@ const EditUser = (props) => {
     return (
         <div>
             {!isError ? <h2>Email: <input type="text"
-                                          onChange={e => setEmail(e.toString())}
+                                          onChange={e => setEmail(email +  e.nativeEvent.data)}
                 /></h2>
                 : <h1>404 not found</h1>}
 
             {!isError ? <h2>Name: <input type="text"
-                                         onChange={e => setName(e.toString())}
+                                         onChange={e => setName(name +  e.nativeEvent.data)}
 
                 /></h2>
                 : ""}
 
             {!isError ? <h2>Age: <input type="text"
-                                        onChange={e => setAge(e.toString())}
+                                        onChange={e => setAge(age +  e.nativeEvent.data)}
 
                 /></h2>
                 : ""}
